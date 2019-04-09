@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -12,8 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public email_address: String;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -21,7 +23,16 @@ export class LoginPage {
   }
 
   login(){
-    this.navCtrl.push("Tabs4UserPage");
+
+    //this.navCtrl.push("Tabs4UserPage");
+    console.log(this.email_address)
+    // set a key/value
+    this.storage.set('age', '25');
+
+    // Or to get a key/value pair
+    this.storage.get('age').then((val) => {
+      console.log('Your age is', val);
+    });
   }
 
 }
