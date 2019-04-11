@@ -11,17 +11,15 @@
 </ion-header>
 
 <ion-content padding text-center>
-    <br/><br/><br/>
-    <form #loginform="ngForm">
+  <br /><br /><br />
+  <form #loginform="ngForm">
+    <input ion-input type="email" placeholder="Enter your email Address" [(ngModel)]="email_address" required
+      name="email" #email="ngModel">
+    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Email is required</div>
 
-      
-    <input ion-input type="email" placeholder="Enter your email Address" [(ngModel)]="email_address" required name="email" #email="ngModel">
-    <div [hidden]="email.valid || email.pristine"
-     class="alert alert-danger">Email is required</div> 
-     
-    <br/><br/>
+    <br /><br />
     <button ion-button color="primary" [disabled]="!loginform.form.valid" (click)="login()">Login</button>
 
-    </form>
+  </form>
 
 </ion-content>

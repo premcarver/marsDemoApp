@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login';
+import { PostDataProvider } from '../../providers/post-data/post-data';
 
 
 /**
@@ -18,11 +19,17 @@ import { LoginPage } from '../login/login';
 })
 export class UserPostPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private storage: Storage,  private app: App) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private post_data: PostDataProvider, private storage: Storage,  private app: App) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     console.log('ionViewDidLoad UserPostPage');
+    this.post_data.getPosts().then((res)=>{
+      console.log("============posts=============>"+res);
+    },
+    (err)=>{
+      console.log("********************>"+err);
+    })
   }
 
   logout(){

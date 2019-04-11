@@ -10,6 +10,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { PostDataProvider } from '../providers/post-data/post-data';
+import { UserDataProvider } from '../providers/user-data/user-data';
+import { RestServiceProvider } from '../providers/rest-service/rest-service';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { PostDataProvider } from '../providers/post-data/post-data';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({
       name: '__mydb',
@@ -33,7 +37,9 @@ import { PostDataProvider } from '../providers/post-data/post-data';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PostDataProvider
+    PostDataProvider,
+    UserDataProvider,
+    RestServiceProvider
   ]
 })
 export class AppModule {}
